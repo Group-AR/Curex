@@ -260,7 +260,7 @@ def style_plot(fig, title_text):
     return fig
 
 def draw_charts(df_inventory, df_trans):
-    st.markdown("<br><h3 style='margin-bottom: 25px; color: #5EEAD4;'>📊 التحليلات والتقارير الطبية المتقدمة</h3>", unsafe_allow_html=True)
+    st.markdown("<br><h3 style='margin-bottom: 25px; color: #5EEAD4;'>التحليلات والتقارير الطبية المتقدمة</h3>", unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     with col1:
@@ -292,7 +292,7 @@ def create_dashboard():
         st.markdown(f"""
             <div class="kpi-card-medical">
                 <div style="font-size: 26px; color: #60A5FA; margin-bottom: 8px;"><i class="bi bi-box-seam"></i></div>
-                <div class="kpi-title-large">📦 إجمالي المنتجات</div>
+                <div class="kpi-title-large">إجمالي المنتجات</div>
                 <div class="kpi-number-large">{len(df_products)}</div>
             </div>
         """, unsafe_allow_html=True)
@@ -300,7 +300,7 @@ def create_dashboard():
         st.markdown(f"""
             <div class="kpi-card-medical">
                 <div style="font-size: 26px; color: #14B8A6; margin-bottom: 8px;"><i class="bi bi-arrow-repeat"></i></div>
-                <div class="kpi-title-large">🔄 إجمالي العمليات والطلبات</div>
+                <div class="kpi-title-large">إجمالي العمليات والطلبات</div>
                 <div class="kpi-number-large">{len(df_trans)}</div>
             </div>
         """, unsafe_allow_html=True)
@@ -309,7 +309,7 @@ def create_dashboard():
         st.markdown(f"""
             <div class="kpi-card-medical">
                 <div style="font-size: 26px; color: #EF4444; margin-bottom: 8px;"><i class="bi bi-exclamation-octagon"></i></div>
-                <div class="kpi-title-large">🚨 منتجات تحتاج للطلب</div>
+                <div class="kpi-title-large">منتجات تحتاج للطلب</div>
                 <div class="kpi-number-large" style="color: #EF4444 !important;">{reorder_count}</div>
             </div>
         """, unsafe_allow_html=True)
@@ -317,7 +317,7 @@ def create_dashboard():
     draw_charts(df_inventory, df_trans)
 
     st.markdown("<hr style='border-color: rgba(20,184,166,0.25); margin: 35px 0;'>", unsafe_allow_html=True)
-    st.subheader("📋 تفاصيل المخزون الطبي الحالي")
+    st.subheader("تفاصيل المخزون الطبي الحالي")
     search_inv = st.text_input("بحث سريع في المخزون...", key="search_inv_db")
     filtered_df_inv = df_inventory.copy()
     if search_inv and not df_inventory.empty:
@@ -461,7 +461,7 @@ else:
         create_dashboard()
         
         st.markdown("<hr style='border-color: rgba(20,184,166,0.25); margin: 35px 0;'>", unsafe_allow_html=True)
-        st.subheader("➕ إضافة صنف طبى جديد للمخزن")
+        st.subheader("إضافة صنف طبى جديد للمخزن")
         with st.form("add_product"):
             p_name = st.text_input("اسم المنتج أو الدواء الجديد")
             p_bal = st.number_input("الرصيد الابتدائي", min_value=0, value=10)
