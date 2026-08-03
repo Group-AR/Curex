@@ -457,7 +457,7 @@ def create_store():
             c_email = st.text_input("البريد الإلكتروني")
             c_payment = st.selectbox("طريقة الدفع", ["الدفع عند الاستلام (Cash)", "تحويل بنكي", "بطاقة ائتمان"])
             
-        c_address = st.text_area("عنوان التوصيل أو اسم العيادة/المستشفى بالتفصيل")
+        c_address = st.text_area("عنوان التوصيل أو اسم الصيدلية/العيادة/المستشفى بالتفصيل")
         
         submit_order = st.form_submit_button("تأكيد الطلب")
         if submit_order:
