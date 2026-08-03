@@ -19,7 +19,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# الهوية البصرية الطبية المضيئة والمنعشة (أبيض، أبيض مائل للأزرق، لبني، أزرق طبي، تركواز، أخضر هادئ)
+# الهوية البصرية المضيئة والمنعشة (مطابقة للشعار الأصلي والألوان المطلوبة)
 # -----------------------------------------------------------------------------
 st.markdown("""
     <style>
@@ -50,7 +50,30 @@ st.markdown("""
         animation: fadeIn 0.4s ease-out forwards;
     }
 
-    /* واجهة الـ Hero الطبية المنعشة (تعطي إحساساً بالنظافة والتعقيم والثقة) */
+    /* تنسيق الشعار الدقيق المطابق للصورة */
+    .brand-logo {
+        font-size: 38px;
+        font-weight: 900;
+        font-family: 'Cairo', sans-serif;
+        letter-spacing: -1px;
+        line-height: 1.1;
+    }
+    .brand-cure {
+        color: #1E40AF; /* الأزرق الطبي */
+    }
+    .brand-x {
+        color: #0D9488; /* التركواز */
+    }
+    .brand-sub {
+        font-size: 11px;
+        font-weight: 700;
+        color: #64748B;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-top: 2px;
+    }
+
+    /* واجهة الـ Hero الطبية المنعشة */
     .hero-section {
         background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 50%, #E6FFFA 100%);
         border: 1px solid rgba(14, 165, 233, 0.2);
@@ -188,7 +211,7 @@ st.markdown("""
         background: #FFFFFF;
     }
 
-    /* عناصر التنبيهات والتفاعلات المخصصة المطلوبة */
+    /* عناصر التنبيهات والتفاعلات */
     .custom-toast {
         background: #0D9488;
         color: #FFFFFF;
@@ -228,7 +251,7 @@ st.markdown("""
         gap: 10px;
     }
 
-    /* تصميم Tooltips مخصص ونظيف */
+    /* تصميم Tooltips مخصص */
     .medical-tooltip {
         position: relative;
         display: inline-block;
@@ -309,7 +332,7 @@ def send_email_alert(subject, body):
 df_products, df_trans, df_inventory = load_data()
 
 # -----------------------------------------------------------------------------
-# الرسوم البيانية المتناسقة (ألوان فاتحة وطبية)
+# الرسوم البيانية المتناسقة
 # -----------------------------------------------------------------------------
 def style_plot(fig, title_text):
     fig.update_layout(
@@ -350,7 +373,6 @@ def create_dashboard():
         </div>
     """, unsafe_allow_html=True)
 
-    # Toast Notification تجريبي للأدمن
     st.markdown('<div class="custom-toast"><i class="bi bi-bell-fill"></i> تنبيه نظام (Toast Notification): تم تحديث السجلات الطبية بنجاح ومزامنة البيانات.</div>', unsafe_allow_html=True)
 
     c1, c2, c3 = st.columns(3)
@@ -380,7 +402,6 @@ def create_dashboard():
             </div>
         """, unsafe_allow_html=True)
 
-    # Progress Bar تجريبي لكفاءة المخزون
     st.markdown("<p style='font-size: 14px; font-weight:700; color:#0F172A;'>نسبة كفاءة المخزون وتعقيم الصيدلية الرئيسي:</p>", unsafe_allow_html=True)
     st.progress(88)
 
@@ -401,18 +422,18 @@ def create_store():
     st.markdown("""
         <div class="hero-section animated-section">
             <div>
-                <h1 style="font-size: 32px; margin-bottom: 10px; color: #0F172A;">
-                    Cure<span style="color: #0EA5E9;">X</span> للمستلزمات الطبية
-                </h1>
-                <p style="font-size: 15px; color: #475569; max-width: 600px;">نوفر أحدث الأجهزة والمستلزمات الطبية بأعلى معايير الدقة والجودة لدعم منظومتك الصحية.</p>
+                <div class="brand-logo">
+                    <span class="brand-cure">Cure</span><span class="brand-x">X</span>
+                </div>
+                <div class="brand-sub">HEALTHCARE SOLUTIONS</div>
+                <p style="font-size: 15px; color: #475569; max-width: 600px; margin-top: 15px;">نوفر أحدث الأجهزة والمستلزمات الطبية بأعلى معايير الدقة والجودة لدعم منظومتك الصحية.</p>
             </div>
             <div style="font-size: 45px; font-weight: 900; background: #E0F2FE; color: #0EA5E9; padding: 15px 25px; border-radius: 16px; border: 1px solid #BAE6FD; box-shadow: 0 0 15px rgba(14,165,233,0.1);">
-                Cure<span style="color: #0D9488;">X</span> ↗
+                <span class="brand-cure">Cure</span><span class="brand-x">X</span> ↗
             </div>
         </div>
     """, unsafe_allow_html=True)
 
-    # Tooltip تجريبي وتوضيحي
     st.markdown("""
         <div style="margin-bottom: 20px; font-size: 14px; color: #475569;">
             معلومات المعايير الطبية: 
@@ -468,7 +489,6 @@ def create_store():
         submit_order = st.form_submit_button("تأكيد وإرسال الطلب الطبي")
         if submit_order:
             if c_buyer and c_phone and c_address and c_name:
-                # محاكاة Loading Spinner أثناء المعالجة
                 with st.spinner("جاري معالجة الطلب الطبي والتحقق من صلاحية التعقيم والمنتجات..."):
                     time.sleep(1.2)
                     try:
@@ -493,11 +513,9 @@ def create_store():
                         
                         save_data(df_products, df_trans_updated, df_inventory)
                         
-                        # Success Alert مخصص ونظيف
                         st.markdown('<div class="custom-success-alert"><i class="bi bi-check-circle-fill"></i> تمت عملية إتمام الطلب بنجاح تام! تم إرسال تفاصيل الشحن والتعقيم لبريدك.</div>', unsafe_allow_html=True)
                         st.balloons()
                     except Exception as e:
-                        # Error Alert مخصص ونظيف
                         st.markdown(f'<div class="custom-error-alert"><i class="bi bi-x-octagon-fill"></i> حدث خطأ أثناء معالجة الطلب: {e}</div>', unsafe_allow_html=True)
             else:
                 st.markdown('<div class="custom-error-alert"><i class="bi bi-exclamation-triangle-fill"></i> يرجى ملء كافة البيانات الأساسية المطلوبة لإتمام الطلب.</div>', unsafe_allow_html=True)
@@ -509,7 +527,9 @@ current_time_str = datetime.now().strftime("%Y-%m-%d | %H:%M")
 st.markdown(f"""
     <div class="top-nav animated-section">
         <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 22px; font-weight: 900; color: #0F172A;">Cure<span style="color: #0EA5E9;">X</span> ↗</span>
+            <div class="brand-logo" style="font-size: 24px;">
+                <span class="brand-cure">Cure</span><span class="brand-x">X</span>
+            </div>
             <span style="font-size: 14px; font-weight: 600; color: #475569;">منظومة إدارة المستلزمات الطبية</span>
         </div>
         <div style="font-size: 13px; color: #0D9488; background: #ECFDF5; padding: 5px 12px; border-radius: 20px; border: 1px solid #A7F3D0; ">
@@ -524,8 +544,10 @@ st.markdown(f"""
 with st.sidebar:
     st.markdown("""
         <div style="text-align: center; padding: 15px 0;" class="animated-section">
-            <div style="font-size: 34px; font-weight: 900; color: #0F172A; margin-bottom: 4px;">Cure<span style="color: #0EA5E9;">X</span> ↗</div>
-            <p style="font-size: 12px; color: #64748B; margin-top: 2px;">Medical Supplies ERP</p>
+            <div class="brand-logo" style="font-size: 30px; margin-bottom: 2px;">
+                <span class="brand-cure">Cure</span><span class="brand-x">X</span>
+            </div>
+            <div class="brand-sub" style="font-size: 9px;">HEALTHCARE SOLUTIONS</div>
         </div>
         <hr style="border-color: #E2E8F0; margin-bottom: 15px;">
     """, unsafe_allow_html=True)
@@ -569,7 +591,7 @@ else:
 st.markdown("""
     <hr style='border-color: #CBD5E1; margin-top: 50px;'>
     <div style='display: flex; justify-content: space-between; align-items: center; color: #64748B; font-size: 13px; padding-bottom: 25px;' class='animated-section'>
-        <div><strong style="color: #0EA5E9;">CureX</strong> - نظام إدارة المستلزمات الطبية بمعايير التعقيم العالمية</div>
+        <div><strong style="color: #1E40AF;">CureX</strong> - نظام إدارة المستلزمات الطبية بمعايير التعقيم العالمية</div>
         <div>&copy; 2026 جميع الحقوق محفوظة</div>
     </div>
 """, unsafe_allow_html=True)
