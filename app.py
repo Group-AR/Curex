@@ -9,11 +9,24 @@ from datetime import datetime
 import time
 
 # -----------------------------------------------------------------------------
-# إعدادات الصفحة
+# إعدادات الصفحة (استخدام لوجو CureX SVG كأيقونة للمتصفح)
 # -----------------------------------------------------------------------------
+curex_favicon_svg = '''
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#FFFFFF"/>
+  <text x="12" y="65" font-family="Arial, sans-serif" font-weight="bold" font-size="55" fill="#1E40AF">C</text>
+  <path d="M 60 25 L 85 25 L 85 50" fill="none" stroke="#0D9488" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 52 75 L 75 52 L 85 52" fill="none" stroke="#0D9488" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="65,65 72,55 78,72 85,52" fill="none" stroke="#0D9488" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+'''
+import base64
+encoded_favicon = base64.b64encode(curex_favicon_svg.encode("utf-8")).decode("utf-8")
+favicon_data_url = f"data:image/svg+xml;base64,{encoded_favicon}"
+
 st.set_page_config(
     page_title="متجر CureX للمستلزمات الطبية",
-    page_icon="CureX",
+    page_icon=favicon_data_url,
     layout="wide",
     initial_sidebar_state="expanded"
 )
