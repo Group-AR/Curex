@@ -9,15 +9,14 @@ from datetime import datetime
 import time
 
 # -----------------------------------------------------------------------------
-# إعدادات الصفحة (استخدام لوجو CureX SVG كأيقونة للمتصفح)
+# إعدادات الصفحة (أيقونة متطورة لشعار CureX السهم والنبض)
 # -----------------------------------------------------------------------------
 curex_favicon_svg = '''
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <rect width="100" height="100" rx="20" fill="#FFFFFF"/>
   <text x="12" y="65" font-family="Arial, sans-serif" font-weight="bold" font-size="55" fill="#1E40AF">C</text>
-  <path d="M 60 25 L 85 25 L 85 50" fill="none" stroke="#0D9488" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 52 75 L 75 52 L 85 52" fill="none" stroke="#0D9488" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <polyline points="65,65 72,55 78,72 85,52" fill="none" stroke="#0D9488" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 55 28 L 82 28 L 82 55" fill="none" stroke="#0D9488" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="52,72 68,52 76,68 85,45" fill="none" stroke="#0D9488" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 '''
 import base64
@@ -32,7 +31,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# الهوية البصرية المضيئة والمنعشة (مطابقة للشعار الأصلي والألوان المطلوبة)
+# الهوية البصرية المضيئة (مع الشعار الدقيق والسهم والنبض والبارات الملونة)
 # -----------------------------------------------------------------------------
 st.markdown("""
     <style>
@@ -63,19 +62,23 @@ st.markdown("""
         animation: fadeIn 0.4s ease-out forwards;
     }
 
-    /* تنسيق الشعار الدقيق المطابق للصورة */
-    .brand-logo {
-        font-size: 38px;
-        font-weight: 900;
+    /* رسم شعار CureX الاحترافي (النص + السهم والنبض) */
+    .curex-logo-container {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         font-family: 'Cairo', sans-serif;
+        font-weight: 900;
+        font-size: 38px;
         letter-spacing: -1px;
-        line-height: 1.1;
     }
-    .brand-cure {
-        color: #1E40AF; /* الأزرق الطبي */
+    .cure-text {
+        color: #1E40AF;
     }
-    .brand-x {
-        color: #0D9488; /* التركواز */
+    .x-container {
+        position: relative;
+        display: inline-block;
+        color: #0D9488;
     }
     .brand-sub {
         font-size: 11px;
@@ -83,7 +86,7 @@ st.markdown("""
         color: #64748B;
         letter-spacing: 2.5px;
         text-transform: uppercase;
-        margin-top: 2px;
+        margin-top: -4px;
     }
 
     /* واجهة الـ Hero الطبية المنعشة */
@@ -224,7 +227,13 @@ st.markdown("""
         background: #FFFFFF;
     }
 
-    /* عناصر التنبيهات والتفاعلات */
+    /* ألوان مخصصة للبارات (Progress Bars) بتدرجات تركوازية وزرقاء متناسقة */
+    .stProgress > div > div > div > div {
+        background: linear-gradient(90deg, #0EA5E9 0%, #0D9488 100%) !important;
+        border-radius: 10px;
+    }
+
+    /* عناصر التنبيهات */
     .custom-toast {
         background: #0D9488;
         color: #FFFFFF;
@@ -264,7 +273,6 @@ st.markdown("""
         gap: 10px;
     }
 
-    /* تصميم Tooltips مخصص */
     .medical-tooltip {
         position: relative;
         display: inline-block;
@@ -322,27 +330,23 @@ def save_data(df_products, df_trans, df_inventory):
         df_inventory.to_excel(writer, sheet_name="Inventory Balance", index=False)
     st.cache_data.clear()
 
-def send_email_alert(subject, body):
-    try:
-        sender_email = st.secrets["EMAIL_USER"]
-        sender_password = st.secrets["EMAIL_PASS"]
-        receiver_email = st.secrets["RECEIVER_EMAIL"]
-
-        message = MIMEMultipart()
-        message["From"] = sender_email
-        message["To"] = receiver_email
-        message["Subject"] = subject
-        message.attach(MIMEText(body, "plain", "utf-8"))
-
-        server = smtplib.SMTP(get_smtp_server(), 587)
-        server.starttls()
-        server.login(sender_email, sender_password)
-        server.sendmail(sender_email, receiver_email, message.as_string())
-        server.quit()
-    except Exception as e:
-        print(f"فشل إرسال الإيميل: {e}")
-
 df_products, df_trans, df_inventory = load_data()
+
+# HTML المخصص لشعار CureX مع السهم والنبض
+curex_logo_html = """
+    <div style="line-height: 1.1;">
+        <div class="curex-logo-container">
+            <span class="cure-text">Cure</span>
+            <span class="x-container">X
+                <svg style="position: absolute; top: -14px; right: -22px; width: 38px; height: 38px;" viewBox="0 0 100 100" fill="none">
+                    <path d="M 25 35 L 75 35 L 75 85" stroke="#0D9488" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="30,68 45,50 58,65 75,35" stroke="#0D9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </div>
+        <div class="brand-sub">HEALTHCARE SOLUTIONS</div>
+    </div>
+"""
 
 # -----------------------------------------------------------------------------
 # الرسوم البيانية المتناسقة
@@ -376,7 +380,7 @@ def draw_charts(df_inventory, df_trans):
             st.plotly_chart(style_plot(fig_bar, "مستوى المخزون الحالي"), use_container_width=True)
 
 # -----------------------------------------------------------------------------
-# لوحة التحكم الرئيسية
+# لوحة التحكم الرئيسية (الأدمن)
 # -----------------------------------------------------------------------------
 def create_dashboard():
     st.markdown("""
@@ -415,7 +419,7 @@ def create_dashboard():
             </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("<p style='font-size: 14px; font-weight:700; color:#0F172A;'>نسبة كفاءة المخزون وتعقيم الصيدلية الرئيسي:</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 14px; font-weight:700; color:#0F172A;'>نسبة كفاءة المخزون العام:</p>", unsafe_allow_html=True)
     st.progress(88)
 
     draw_charts(df_inventory, df_trans)
@@ -432,17 +436,14 @@ def create_dashboard():
 # صفحة متجر CureX الاحترافية
 # -----------------------------------------------------------------------------
 def create_store():
-    st.markdown("""
+    st.markdown(f"""
         <div class="hero-section animated-section">
             <div>
-                <div class="brand-logo">
-                    <span class="brand-cure">Cure</span><span class="brand-x">X</span>
-                </div>
-                <div class="brand-sub">HEALTHCARE SOLUTIONS</div>
+                {curex_logo_html}
                 <p style="font-size: 15px; color: #475569; max-width: 600px; margin-top: 15px;">نوفر أحدث الأجهزة والمستلزمات الطبية بأعلى معايير الدقة والجودة لدعم منظومتك الصحية.</p>
             </div>
-            <div style="font-size: 45px; font-weight: 900; background: #E0F2FE; color: #0EA5E9; padding: 15px 25px; border-radius: 16px; border: 1px solid #BAE6FD; box-shadow: 0 0 15px rgba(14,165,233,0.1);">
-                <span class="brand-cure">Cure</span><span class="brand-x">X</span> ↗
+            <div style="background: #E0F2FE; padding: 20px 25px; border-radius: 16px; border: 1px solid #BAE6FD; box-shadow: 0 0 15px rgba(14,165,233,0.1);">
+                <i class="bi bi-heart-pulse-fill" style="font-size: 40px; color: #0D9488;"></i>
             </div>
         </div>
     """, unsafe_allow_html=True)
@@ -491,7 +492,7 @@ def create_store():
         
         col1, col2 = st.columns(2)
         with col1:
-            c_buyer = st.text_input("اسمك الكريم / اسم المؤسسة الطبية")
+            c_buyer = st.text_input("اسمك / اسم المؤسسة الطبية")
             c_phone = st.text_input("رقم الهاتـف / الجوال")
         with col2:
             c_email = st.text_input("البريد الإلكتروني")
@@ -499,7 +500,7 @@ def create_store():
             
         c_address = st.text_area("عنوان التوصيل أو اسم العيادة/المستشفى بالتفصيل")
         
-        submit_order = st.form_submit_button("تأكيد وإرسال الطلب الطبي")
+        submit_order = st.form_submit_button("تأكيد الطلب")
         if submit_order:
             if c_buyer and c_phone and c_address and c_name:
                 with st.spinner("جاري معالجة الطلب الطبي والتحقق من صلاحية التعقيم والمنتجات..."):
@@ -534,16 +535,15 @@ def create_store():
                 st.markdown('<div class="custom-error-alert"><i class="bi bi-exclamation-triangle-fill"></i> يرجى ملء كافة البيانات الأساسية المطلوبة لإتمام الطلب.</div>', unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# الشريط العلوي والشريط الجانبي
+# الشريط العلوي والشريط الجانبي (مخفي للعملاء، سري للأدمن فقط)
 # -----------------------------------------------------------------------------
 current_time_str = datetime.now().strftime("%Y-%m-%d | %H:%M")
 st.markdown(f"""
     <div class="top-nav animated-section">
         <div style="display: flex; align-items: center; gap: 12px;">
-            <div class="brand-logo" style="font-size: 24px;">
-                <span class="brand-cure">Cure</span><span class="brand-x">X</span>
+            <div style="transform: scale(0.65); transform-origin: right;">
+                {curex_logo_html}
             </div>
-            <span style="font-size: 14px; font-weight: 600; color: #475569;">منظومة إدارة المستلزمات الطبية</span>
         </div>
         <div style="font-size: 13px; color: #0D9488; background: #ECFDF5; padding: 5px 12px; border-radius: 20px; border: 1px solid #A7F3D0; ">
             <i class="bi bi-clock"></i> الوقت الحالي: {current_time_str}
@@ -555,23 +555,23 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 with st.sidebar:
-    st.markdown("""
-        <div style="text-align: center; padding: 15px 0;" class="animated-section">
-            <div class="brand-logo" style="font-size: 30px; margin-bottom: 2px;">
-                <span class="brand-cure">Cure</span><span class="brand-x">X</span>
-            </div>
-            <div class="brand-sub" style="font-size: 9px;">HEALTHCARE SOLUTIONS</div>
+    st.markdown(f"""
+        <div style="text-align: center; padding: 10px 0;" class="animated-section">
+            {curex_logo_html}
         </div>
         <hr style="border-color: #E2E8F0; margin-bottom: 15px;">
     """, unsafe_allow_html=True)
     
-    app_mode = st.selectbox("🎯 اختر واجهة الاستخدام", [
+    # اختيار واجهة الاستخدام بدون أيقونات كما طلبْت
+    app_mode = st.selectbox("اختر واجهة الاستخدام", [
         "متجر CureX الطبي", 
         "لوحة التحكم الرئيسية"
     ])
     
     st.markdown("---")
-    admin_pass = st.text_input("🔒 كلمة مرور الأدمن", type="password")
+    
+    # حقل سري تماماً للأدمن فقط (محمي لكلمة المرور)
+    admin_pass = st.text_input("كلمة المرور للتحكم", type="password")
 
 if app_mode == "متجر CureX الطبي":
     create_store()
@@ -596,7 +596,7 @@ else:
                     st.markdown('<div class="custom-success-alert"><i class="bi bi-check-circle-fill"></i> تمت إضافة الصنف الطبي بنجاح للمخزن.</div>', unsafe_allow_html=True)
                     st.rerun()
     else:
-        st.warning("🔒 من فضلك ادخل كلمة مرور الأدمن الصحيحة في القائمة الجانبية لعرض لوحة التحكم الكاملة.")
+        st.warning("🔒 أدخل كلمة المرور الصحيحة في القائمة الجانبية للوصول إلى لوحة التحكم الإدارية.")
 
 # -----------------------------------------------------------------------------
 # الفوتر
