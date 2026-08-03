@@ -19,7 +19,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# الهوية البصرية (درجات أخف وأكثر هدوءاً وراحة للعين)
+# الهوية البصرية (درجات أهدأ بكثير وأكثر راحة للعين)
 # -----------------------------------------------------------------------------
 st.markdown("""
     <style>
@@ -27,19 +27,19 @@ st.markdown("""
     @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
 
     .stApp {
-        background: linear-gradient(rgba(10, 18, 35, 0.88), rgba(6, 12, 24, 0.92)), 
+        background: linear-gradient(rgba(15, 23, 42, 0.94), rgba(10, 15, 30, 0.96)), 
                     url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1920&auto=format&fit=crop');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
         font-family: 'Cairo', sans-serif;
-        color: #E2E8F0;
+        color: #CBD5E1;
         direction: rtl;
         text-align: right;
     }
 
     h1, h2, h3, h4, h5, h6, label, .stMarkdown p {
-        color: #E2E8F0 !important;
+        color: #CBD5E1 !important;
         font-weight: 700 !important;
         text-align: right !important;
     }
@@ -53,16 +53,16 @@ st.markdown("""
         animation: fadeIn 0.4s ease-out forwards;
     }
 
-    /* واجهة الـ Hero بدرجات هادئة جداً */
+    /* واجهة الـ Hero بدرجات هادئة وناعمة جداً */
     .hero-section {
-        background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(13, 148, 136, 0.2) 100%);
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(13, 148, 136, 0.1) 100%);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(13, 148, 136, 0.25);
+        border: 1px solid rgba(13, 148, 136, 0.15);
         border-radius: 24px;
         padding: 45px;
         margin-bottom: 35px;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.03);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -73,45 +73,45 @@ st.markdown("""
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgba(30, 41, 59, 0.5);
+        background: rgba(30, 41, 59, 0.35);
         backdrop-filter: blur(12px);
-        border-bottom: 2px solid rgba(13, 148, 136, 0.3);
+        border-bottom: 2px solid rgba(13, 148, 136, 0.2);
         padding: 15px 30px;
         border-radius: 16px;
         margin-bottom: 30px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
 
     /* الشريط الجانبي */
     [data-testid="stSidebar"] {
-        background: rgba(15, 23, 42, 0.9) !important;
-        border-left: 1px solid rgba(13, 148, 136, 0.2);
+        background: rgba(15, 23, 42, 0.85) !important;
+        border-left: 1px solid rgba(13, 148, 136, 0.15);
         direction: rtl;
     }
 
     /* بطاقات المؤشرات (KPI Cards) */
     .kpi-card-medical {
-        background: rgba(30, 41, 59, 0.45);
+        background: rgba(30, 41, 59, 0.3);
         backdrop-filter: blur(12px);
         border-radius: 18px;
         padding: 25px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        border: 1px solid rgba(51, 65, 85, 0.4);
-        border-right: 4px solid #0D9488;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(51, 65, 85, 0.3);
+        border-right: 4px solid #14B8A6;
         transition: all 0.3s ease;
         margin-bottom: 20px;
     }
 
     .kpi-card-medical:hover {
         transform: translateY(-4px);
-        border-color: #0D9488;
-        box-shadow: 0 12px 40px rgba(13, 148, 136, 0.15);
+        border-color: #14B8A6;
+        box-shadow: 0 12px 40px rgba(20, 184, 166, 0.1);
     }
 
     .kpi-title-large {
         font-size: 16px !important;
         font-weight: 700 !important;
-        color: #93C5FD !important;
+        color: #94A3B8 !important;
         margin-bottom: 8px;
     }
 
@@ -119,32 +119,32 @@ st.markdown("""
         font-size: 34px !important;
         font-weight: 900 !important;
         color: #2DD4BF !important;
-        text-shadow: 0 0 12px rgba(45, 212, 191, 0.2);
+        text-shadow: 0 0 10px rgba(45, 212, 191, 0.15);
     }
 
     /* بطاقات المنتجات */
     .product-medical-card {
-        background: rgba(30, 41, 59, 0.45);
+        background: rgba(30, 41, 59, 0.3);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(51, 65, 85, 0.4);
+        border: 1px solid rgba(51, 65, 85, 0.3);
         border-radius: 18px;
         padding: 25px;
         text-align: center;
         transition: all 0.3s ease;
         height: 100%;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
     }
 
     .product-medical-card:hover {
         transform: translateY(-4px);
-        border-color: #0D9488;
-        box-shadow: 0 12px 35px rgba(13, 148, 136, 0.15);
+        border-color: #14B8A6;
+        box-shadow: 0 12px 35px rgba(20, 184, 166, 0.1);
     }
 
     .product-icon-box {
         font-size: 32px;
         color: #2DD4BF;
-        background: rgba(13, 148, 136, 0.12);
+        background: rgba(20, 184, 166, 0.08);
         width: 65px;
         height: 65px;
         border-radius: 50%;
@@ -152,48 +152,48 @@ st.markdown("""
         align-items: center;
         justify-content: center;
         margin: 0 auto 15px auto;
-        border: 1px solid rgba(45, 212, 191, 0.25);
-        box-shadow: 0 0 12px rgba(13, 148, 136, 0.15);
+        border: 1px solid rgba(45, 212, 191, 0.15);
+        box-shadow: 0 0 10px rgba(20, 184, 166, 0.1);
     }
 
     /* حقول الإدخال */
     .stTextInput input, .stNumberInput input, .stTextArea textarea, .stSelectbox div[data-baseweb="select"] {
-        background-color: rgba(15, 23, 42, 0.65) !important;
-        color: #E2E8F0 !important;
+        background-color: rgba(15, 23, 42, 0.5) !important;
+        color: #CBD5E1 !important;
         border-radius: 12px !important;
-        border: 1px solid rgba(51, 65, 85, 0.5) !important;
+        border: 1px solid rgba(51, 65, 85, 0.4) !important;
         font-weight: 600 !important;
     }
 
     .stTextInput input:focus, .stNumberInput input:focus {
-        border-color: #0D9488 !important;
-        box-shadow: 0 0 12px rgba(13, 148, 136, 0.25) !important;
+        border-color: #14B8A6 !important;
+        box-shadow: 0 0 10px rgba(20, 184, 166, 0.2) !important;
     }
 
-    /* الأزرار بدرجات أزرق وتيركواز أهدأ وأكثر راحة */
+    /* الأزرار بدرجات هادئة جداً وناعمة */
     .stButton>button {
-        background: linear-gradient(135deg, #1E40AF 0%, #0F766E 100%) !important;
-        color: white !important;
+        background: linear-gradient(135deg, #1E3A8A 0%, #0F766E 100%) !important;
+        color: #F8FAFC !important;
         border-radius: 12px !important;
         font-weight: 800 !important;
         font-size: 15px !important;
         padding: 0.7rem 1.5rem !important;
-        border: 1px solid rgba(45, 212, 191, 0.3) !important;
-        box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25) !important;
+        border: 1px solid rgba(45, 212, 191, 0.2) !important;
+        box-shadow: 0 6px 20px rgba(30, 58, 138, 0.15) !important;
         width: 100% !important;
         transition: all 0.3s ease;
     }
 
     .stButton>button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(13, 148, 136, 0.4) !important;
+        box-shadow: 0 10px 25px rgba(20, 184, 166, 0.25) !important;
     }
 
     [data-testid="stDataFrame"] {
         border-radius: 14px;
         overflow: hidden;
-        border: 1px solid rgba(51, 65, 85, 0.4);
-        background: rgba(30, 41, 59, 0.45);
+        border: 1px solid rgba(51, 65, 85, 0.3);
+        background: rgba(30, 41, 59, 0.3);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -252,9 +252,9 @@ def style_plot(fig, title_text):
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
-        font=dict(color="#E2E8F0", size=13, family="Cairo"),
+        font=dict(color="#CBD5E1", size=13, family="Cairo"),
         title=dict(text=title_text, x=0.5, xanchor='center', font=dict(color="#2DD4BF", size=18, family="Cairo")),
-        legend=dict(font=dict(color="#E2E8F0", size=11), x=1.02, y=0.5),
+        legend=dict(font=dict(color="#CBD5E1", size=11), x=1.02, y=0.5),
         margin=dict(t=60, b=80, l=40, r=120)
     )
     return fig
@@ -265,14 +265,14 @@ def draw_charts(df_inventory, df_trans):
     col1, col2 = st.columns(2)
     with col1:
         if not df_trans.empty and "Date" in df_trans.columns and "Quantity" in df_trans.columns:
-            fig_line = px.line(df_trans, x="Date", y="Quantity", color="Item Name" if "Item Name" in df_trans.columns else None, template="plotly_dark", markers=True, color_discrete_sequence=['#1E40AF', '#0D9488', '#60A5FA', '#2DD4BF'])
+            fig_line = px.line(df_trans, x="Date", y="Quantity", color="Item Name" if "Item Name" in df_trans.columns else None, template="plotly_dark", markers=True, color_discrete_sequence=['#1E3A8A', '#14B8A6', '#60A5FA', '#2DD4BF'])
             st.plotly_chart(style_plot(fig_line, "حركة المستلزمات اليومية"), use_container_width=True)
         else:
             st.info("لا توجد بيانات كافية لرسم الخط البياني.")
 
     with col2:
         if not df_inventory.empty:
-            fig_bar = px.bar(df_inventory, x="Item Name", y="Current Balance", template="plotly_dark", color="Current Balance", color_continuous_scale=["#1E40AF", "#0D9488", "#2DD4BF"])
+            fig_bar = px.bar(df_inventory, x="Item Name", y="Current Balance", template="plotly_dark", color="Current Balance", color_continuous_scale=["#1E3A8A", "#14B8A6", "#2DD4BF"])
             fig_bar.update_xaxes(tickangle=-45, tickfont=dict(size=11))
             st.plotly_chart(style_plot(fig_bar, "مستوى المخزون الحالي"), use_container_width=True)
 
@@ -283,7 +283,7 @@ def create_dashboard():
     st.markdown("""
         <div class="animated-section">
             <h1 style="font-size: 32px; margin-bottom: 10px; color: #2DD4BF;"><i class="bi bi-speedometer2"></i> لوحة التحكم الإدارية</h1>
-            <p style="color: #93C5FD; font-size: 15px; margin-bottom: 25px;">متابعة شاملة لحالة المخزون، العمليات، والمؤشرات الحيوية لمتجر CureX.</p>
+            <p style="color: #94A3B8; font-size: 15px; margin-bottom: 25px;">متابعة شاملة لحالة المخزون، العمليات، والمؤشرات الحيوية لمتجر CureX.</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -299,7 +299,7 @@ def create_dashboard():
     with c2:
         st.markdown(f"""
             <div class="kpi-card-medical">
-                <div style="font-size: 26px; color: #0D9488; margin-bottom: 8px;"><i class="bi bi-arrow-repeat"></i></div>
+                <div style="font-size: 26px; color: #14B8A6; margin-bottom: 8px;"><i class="bi bi-arrow-repeat"></i></div>
                 <div class="kpi-title-large">إجمالي العمليات والطلبات</div>
                 <div class="kpi-number-large">{len(df_trans)}</div>
             </div>
@@ -307,7 +307,7 @@ def create_dashboard():
     with c3:
         reorder_count = len(df_inventory[df_inventory["Reorder Point"].astype(str).str.contains("Reorder|🚨", na=False)]) if not df_inventory.empty else 0
         st.markdown(f"""
-            <div class="kpi-card-medical">
+            <div class="kpi-card-medical" style="border-right-color: #EF4444;">
                 <div style="font-size: 26px; color: #EF4444; margin-bottom: 8px;"><i class="bi bi-exclamation-octagon"></i></div>
                 <div class="kpi-title-large">منتجات تحتاج للطلب</div>
                 <div class="kpi-number-large" style="color: #EF4444 !important;">{reorder_count}</div>
@@ -316,7 +316,7 @@ def create_dashboard():
 
     draw_charts(df_inventory, df_trans)
 
-    st.markdown("<hr style='border-color: rgba(51,65,85,0.5); margin: 35px 0;'>", unsafe_allow_html=True)
+    st.markdown("<hr style='border-color: rgba(51,65,85,0.3); margin: 35px 0;'>", unsafe_allow_html=True)
     st.subheader("تفاصيل المخزون الطبي الحالي")
     search_inv = st.text_input("بحث سريع في المخزون...", key="search_inv_db")
     filtered_df_inv = df_inventory.copy()
@@ -334,9 +334,9 @@ def create_store():
                 <h1 style="font-size: 32px; margin-bottom: 10px;">
                     Cure<span style="color: #2DD4BF;">X</span> للمستلزمات الطبية
                 </h1>
-                <p style="font-size: 15px; color: #93C5FD; max-width: 600px;">نوفر أحدث الأجهزة والمستلزمات الطبية بأعلى معايير الدقة والجودة لدعم منظومتك الصحية.</p>
+                <p style="font-size: 15px; color: #94A3B8; max-width: 600px;">نوفر أحدث الأجهزة والمستلزمات الطبية بأعلى معايير الدقة والجودة لدعم منظومتك الصحية.</p>
             </div>
-            <div style="font-size: 45px; font-weight: 900; background: rgba(13, 148, 136, 0.15); padding: 15px 25px; border-radius: 16px; border: 1px solid rgba(45, 212, 191, 0.3); box-shadow: 0 0 15px rgba(13, 148, 136, 0.15);">
+            <div style="font-size: 45px; font-weight: 900; background: rgba(20, 184, 166, 0.1); padding: 15px 25px; border-radius: 16px; border: 1px solid rgba(45, 212, 191, 0.2); box-shadow: 0 0 15px rgba(20, 184, 166, 0.08);">
                 Cure<span style="color: #2DD4BF;">X</span> ↗
             </div>
         </div>
@@ -356,13 +356,13 @@ def create_store():
             item_name = row.get("Item Name", "منتج بدون اسم")
             current_bal = row.get("Current Balance", 0)
             
-            stock_badge = f'<span style="background: rgba(13,148,136,0.15); color: #2DD4BF; border: 1px solid rgba(45,212,191,0.25); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 12px;"><i class="bi bi-check-circle"></i> متوفر: {current_bal}</span>' if current_bal > 5 else f'<span style="background: rgba(239,68,68,0.15); color: #F87171; border: 1px solid rgba(239,68,68,0.25); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 12px;"><i class="bi bi-exclamation-circle"></i> قارب على النفاد: {current_bal}</span>'
+            stock_badge = f'<span style="background: rgba(20,184,166,0.1); color: #2DD4BF; border: 1px solid rgba(45,212,191,0.2); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 12px;"><i class="bi bi-check-circle"></i> متوفر: {current_bal}</span>' if current_bal > 5 else f'<span style="background: rgba(239,68,68,0.1); color: #F87171; border: 1px solid rgba(239,68,68,0.2); padding: 5px 12px; border-radius: 20px; font-weight: 700; font-size: 12px;"><i class="bi bi-exclamation-circle"></i> قارب على النفاد: {current_bal}</span>'
                 
             with cols[idx % 3]:
                 st.markdown(f"""
                     <div class="product-medical-card">
                         <div class="product-icon-box"><i class="bi bi-capsule"></i></div>
-                        <h4 style="color: #E2E8F0; font-size: 17px; margin-bottom: 15px;">{item_name}</h4>
+                        <h4 style="color: #CBD5E1; font-size: 17px; margin-bottom: 15px;">{item_name}</h4>
                         {stock_badge}
                     </div>
                 """, unsafe_allow_html=True)
@@ -425,10 +425,10 @@ current_time_str = datetime.now().strftime("%Y-%m-%d | %H:%M")
 st.markdown(f"""
     <div class="top-nav animated-section">
         <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="font-size: 22px; font-weight: 900; color: #E2E8F0;">Cure<span style="color: #2DD4BF;">X</span> ↗</span>
-            <span style="font-size: 14px; font-weight: 600; color: #93C5FD;">منظومة إدارة المستلزمات الطبية</span>
+            <span style="font-size: 22px; font-weight: 900; color: #CBD5E1;">Cure<span style="color: #2DD4BF;">X</span> ↗</span>
+            <span style="font-size: 14px; font-weight: 600; color: #94A3B8;">منظومة إدارة المستلزمات الطبية</span>
         </div>
-        <div style="font-size: 13px; color: #2DD4BF; background: rgba(13,148,136,0.12); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(45,212,191,0.25); ">
+        <div style="font-size: 13px; color: #2DD4BF; background: rgba(20,184,166,0.08); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(45,212,191,0.15); ">
             <i class="bi bi-clock"></i> الوقت الحالي: {current_time_str}
         </div>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -440,10 +440,10 @@ st.markdown(f"""
 with st.sidebar:
     st.markdown("""
         <div style="text-align: center; padding: 15px 0;" class="animated-section">
-            <div style="font-size: 34px; font-weight: 900; color: #E2E8F0; margin-bottom: 4px;">Cure<span style="color: #2DD4BF;">X</span> ↗</div>
-            <p style="font-size: 12px; color: #93C5FD; margin-top: 2px;">Medical Supplies ERP</p>
+            <div style="font-size: 34px; font-weight: 900; color: #CBD5E1; margin-bottom: 4px;">Cure<span style="color: #2DD4BF;">X</span> ↗</div>
+            <p style="font-size: 12px; color: #94A3B8; margin-top: 2px;">Medical Supplies ERP</p>
         </div>
-        <hr style="border-color: rgba(51,65,85,0.5); margin-bottom: 15px;">
+        <hr style="border-color: rgba(51,65,85,0.3); margin-bottom: 15px;">
     """, unsafe_allow_html=True)
     
     app_mode = st.selectbox("🎯 اختر واجهة الاستخدام", [
@@ -460,7 +460,7 @@ else:
     if admin_pass == "lklklk900AR4":
         create_dashboard()
         
-        st.markdown("<hr style='border-color: rgba(51,65,85,0.5); margin: 35px 0;'>", unsafe_allow_html=True)
+        st.markdown("<hr style='border-color: rgba(51,65,85,0.3); margin: 35px 0;'>", unsafe_allow_html=True)
         st.subheader("إضافة صنف طبى جديد للمخزن")
         with st.form("add_product"):
             p_name = st.text_input("اسم المنتج أو الدواء الجديد")
@@ -481,8 +481,8 @@ else:
 # الفوتر
 # -----------------------------------------------------------------------------
 st.markdown("""
-    <hr style='border-color: rgba(51,65,85,0.5); margin-top: 50px;'>
-    <div style='display: flex; justify-content: space-between; align-items: center; color: #93C5FD; font-size: 13px; padding-bottom: 25px;' class='animated-section'>
+    <hr style='border-color: rgba(51,65,85,0.3); margin-top: 50px;'>
+    <div style='display: flex; justify-content: space-between; align-items: center; color: #94A3B8; font-size: 13px; padding-bottom: 25px;' class='animated-section'>
         <div><strong style="color: #2DD4BF;">CureX</strong> - نظام إدارة المستلزمات الطبية</div>
         <div>&copy; 2026 جميع الحقوق محفوظة</div>
     </div>
