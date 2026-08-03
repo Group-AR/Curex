@@ -31,7 +31,7 @@ st.set_page_config(
 )
 
 # -----------------------------------------------------------------------------
-# الهوية البصرية المضيئة (مع الشعار الدقيق والسهم والنبض والبارات الملونة)
+# الهوية البصرية المضيئة
 # -----------------------------------------------------------------------------
 st.markdown("""
     <style>
@@ -62,34 +62,6 @@ st.markdown("""
         animation: fadeIn 0.4s ease-out forwards;
     }
 
-    /* رسم شعار CureX الاحترافي (النص + السهم والنبض) */
-    .curex-logo-container {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-family: 'Cairo', sans-serif;
-        font-weight: 900;
-        font-size: 38px;
-        letter-spacing: -1px;
-    }
-    .cure-text {
-        color: #1E40AF;
-    }
-    .x-container {
-        position: relative;
-        display: inline-block;
-        color: #0D9488;
-    }
-    .brand-sub {
-        font-size: 11px;
-        font-weight: 700;
-        color: #64748B;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        margin-top: -4px;
-    }
-
-    /* واجهة الـ Hero الطبية المنعشة */
     .hero-section {
         background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 50%, #E6FFFA 100%);
         border: 1px solid rgba(14, 165, 233, 0.2);
@@ -102,7 +74,6 @@ st.markdown("""
         justify-content: space-between;
     }
 
-    /* الشريط العلوي */
     .top-nav {
         display: flex;
         justify-content: space-between;
@@ -115,14 +86,12 @@ st.markdown("""
         box-shadow: 0 6px 20px rgba(14, 165, 233, 0.06);
     }
 
-    /* الشريط الجانبي */
     [data-testid="stSidebar"] {
         background: #FFFFFF !important;
         border-left: 1px solid #E2E8F0;
         direction: rtl;
     }
 
-    /* بطاقات المؤشرات (KPI Cards) */
     .kpi-card-medical {
         background: #FFFFFF;
         border-radius: 18px;
@@ -132,12 +101,6 @@ st.markdown("""
         border-right: 5px solid #0EA5E9;
         transition: all 0.3s ease;
         margin-bottom: 20px;
-    }
-
-    .kpi-card-medical:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 15px 35px rgba(13, 148, 136, 0.12);
-        border-color: #0D9488;
     }
 
     .kpi-title-large {
@@ -153,7 +116,6 @@ st.markdown("""
         color: #0D9488 !important;
     }
 
-    /* بطاقات المنتجات الطبية */
     .product-medical-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
@@ -163,12 +125,6 @@ st.markdown("""
         transition: all 0.3s ease;
         height: 100%;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03);
-    }
-
-    .product-medical-card:hover {
-        transform: translateY(-4px);
-        border-color: #0EA5E9;
-        box-shadow: 0 12px 30px rgba(14, 165, 233, 0.1);
     }
 
     .product-icon-box {
@@ -186,7 +142,6 @@ st.markdown("""
         box-shadow: 0 0 10px rgba(14, 165, 233, 0.05);
     }
 
-    /* حقول الإدخال */
     .stTextInput input, .stNumberInput input, .stTextArea textarea, .stSelectbox div[data-baseweb="select"] {
         background-color: #F8FAFC !important;
         color: #0F172A !important;
@@ -195,12 +150,6 @@ st.markdown("""
         font-weight: 600 !important;
     }
 
-    .stTextInput input:focus, .stNumberInput input:focus {
-        border-color: #0EA5E9 !important;
-        box-shadow: 0 0 10px rgba(14, 165, 233, 0.15) !important;
-    }
-
-    /* الأزرار الطبية الاحترافية */
     .stButton>button {
         background: linear-gradient(135deg, #0EA5E9 0%, #0D9488 100%) !important;
         color: #FFFFFF !important;
@@ -214,26 +163,11 @@ st.markdown("""
         transition: all 0.3s ease;
     }
 
-    .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(13, 148, 136, 0.35) !important;
-        background: linear-gradient(135deg, #0284C7 0%, #0F766E 100%) !important;
-    }
-
-    [data-testid="stDataFrame"] {
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid #E2E8F0;
-        background: #FFFFFF;
-    }
-
-    /* ألوان مخصصة للبارات (Progress Bars) بتدرجات تركوازية وزرقاء متناسقة */
     .stProgress > div > div > div > div {
         background: linear-gradient(90deg, #0EA5E9 0%, #0D9488 100%) !important;
         border-radius: 10px;
     }
 
-    /* عناصر التنبيهات */
     .custom-toast {
         background: #0D9488;
         color: #FFFFFF;
@@ -272,44 +206,11 @@ st.markdown("""
         align-items: center;
         gap: 10px;
     }
-
-    .medical-tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-        color: #0EA5E9;
-        font-weight: bold;
-    }
-    .medical-tooltip .tooltip-text {
-        visibility: hidden;
-        width: 180px;
-        background-color: #0F172A;
-        color: #fff;
-        text-align: center;
-        border-radius: 8px;
-        padding: 6px;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        margin-left: -90px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        font-size: 12px;
-        font-weight: normal;
-    }
-    .medical-tooltip:hover .tooltip-text {
-        visibility: visible;
-        opacity: 1;
-    }
     </style>
 """, unsafe_allow_html=True)
 
 file_path = "SmartStock ERP Pro.xlsx"
 
-# -----------------------------------------------------------------------------
-# دوال إدارة البيانات
-# -----------------------------------------------------------------------------
 @st.cache_resource
 def get_smtp_server():
     return "smtp.gmail.com"
@@ -332,25 +233,20 @@ def save_data(df_products, df_trans, df_inventory):
 
 df_products, df_trans, df_inventory = load_data()
 
-# HTML المخصص لشعار CureX مع السهم والنبض
+# تصميم شعار CureX النظيف (النص الملون مع أيقونة السهم والنبض)
 curex_logo_html = """
-    <div style="line-height: 1.1;">
-        <div class="curex-logo-container">
-            <span class="cure-text">Cure</span>
-            <span class="x-container">X
-                <svg style="position: absolute; top: -14px; right: -22px; width: 38px; height: 38px;" viewBox="0 0 100 100" fill="none">
-                    <path d="M 25 35 L 75 35 L 75 85" stroke="#0D9488" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-                    <polyline points="30,68 45,50 58,65 75,35" stroke="#0D9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
-        </div>
-        <div class="brand-sub">HEALTHCARE SOLUTIONS</div>
-    </div>
+<div style="display: inline-flex; align-items: baseline; font-family: 'Cairo', sans-serif; font-weight: 900; font-size: 34px; line-height: 1.1;">
+    <span style="color: #1E40AF;">Cure</span>
+    <span style="color: #0D9488; position: relative; margin-left: 2px;">X
+        <svg style="position: absolute; top: -12px; right: -18px; width: 32px; height: 32px;" viewBox="0 0 100 100" fill="none">
+            <path d="M 25 35 L 75 35 L 75 85" stroke="#0D9488" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="30,68 45,50 58,65 75,35" stroke="#0D9488" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </span>
+</div>
+<div style="font-size: 10px; font-weight: 700; color: #64748B; letter-spacing: 2px; text-transform: uppercase; margin-top: -2px;">HEALTHCARE SOLUTIONS</div>
 """
 
-# -----------------------------------------------------------------------------
-# الرسوم البيانية المتناسقة
-# -----------------------------------------------------------------------------
 def style_plot(fig, title_text):
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
@@ -364,7 +260,6 @@ def style_plot(fig, title_text):
 
 def draw_charts(df_inventory, df_trans):
     st.markdown("<br><h3 style='margin-bottom: 25px; color: #0EA5E9;'>التحليلات والتقارير الطبية المتقدمة</h3>", unsafe_allow_html=True)
-    
     col1, col2 = st.columns(2)
     with col1:
         if not df_trans.empty and "Date" in df_trans.columns and "Quantity" in df_trans.columns:
@@ -379,9 +274,6 @@ def draw_charts(df_inventory, df_trans):
             fig_bar.update_xaxes(tickangle=-45, tickfont=dict(size=11))
             st.plotly_chart(style_plot(fig_bar, "مستوى المخزون الحالي"), use_container_width=True)
 
-# -----------------------------------------------------------------------------
-# لوحة التحكم الرئيسية (الأدمن)
-# -----------------------------------------------------------------------------
 def create_dashboard():
     st.markdown("""
         <div class="animated-section">
@@ -390,7 +282,7 @@ def create_dashboard():
         </div>
     """, unsafe_allow_html=True)
 
-    st.markdown('<div class="custom-toast"><i class="bi bi-bell-fill"></i> تنبيه نظام (Toast Notification): تم تحديث السجلات الطبية بنجاح ومزامنة البيانات.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="custom-toast"><i class="bi bi-bell-fill"></i> تنبيه نظام: تم تحديث السجلات الطبية بنجاح ومزامنة البيانات.</div>', unsafe_allow_html=True)
 
     c1, c2, c3 = st.columns(3)
     with c1:
@@ -432,9 +324,6 @@ def create_dashboard():
         filtered_df_inv = df_inventory[df_inventory["Item Name"].astype(str).str.contains(search_inv, case=False, na=False)]
     st.dataframe(filtered_df_inv, use_container_width=True)
 
-# -----------------------------------------------------------------------------
-# صفحة متجر CureX الاحترافية
-# -----------------------------------------------------------------------------
 def create_store():
     st.markdown(f"""
         <div class="hero-section animated-section">
@@ -445,15 +334,6 @@ def create_store():
             <div style="background: #E0F2FE; padding: 20px 25px; border-radius: 16px; border: 1px solid #BAE6FD; box-shadow: 0 0 15px rgba(14,165,233,0.1);">
                 <i class="bi bi-heart-pulse-fill" style="font-size: 40px; color: #0D9488;"></i>
             </div>
-        </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-        <div style="margin-bottom: 20px; font-size: 14px; color: #475569;">
-            معلومات المعايير الطبية: 
-            <span class="medical-tooltip">معايير التعقيم ISO 🩺
-              <span class="tooltip-text">جميع مستلزماتنا معقمة وفقاً للمعايير العالمية لضمان سلامة المرضى.</span>
-            </span>
         </div>
     """, unsafe_allow_html=True)
 
@@ -524,7 +404,6 @@ def create_store():
                             "Date": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M")
                         }])
                         df_trans_updated = pd.concat([df_trans, new_t], ignore_index=True)
-                        
                         save_data(df_products, df_trans_updated, df_inventory)
                         
                         st.markdown('<div class="custom-success-alert"><i class="bi bi-check-circle-fill"></i> تمت عملية إتمام الطلب بنجاح تام! تم إرسال تفاصيل الشحن والتعقيم لبريدك.</div>', unsafe_allow_html=True)
@@ -534,18 +413,15 @@ def create_store():
             else:
                 st.markdown('<div class="custom-error-alert"><i class="bi bi-exclamation-triangle-fill"></i> يرجى ملء كافة البيانات الأساسية المطلوبة لإتمام الطلب.</div>', unsafe_allow_html=True)
 
-# -----------------------------------------------------------------------------
-# الشريط العلوي والشريط الجانبي (مخفي للعملاء، سري للأدمن فقط)
-# -----------------------------------------------------------------------------
 current_time_str = datetime.now().strftime("%Y-%m-%d | %H:%M")
+
+# استخدام st.markdown مع حقل unsafe_allow_html محاط بطريقة صحيحة تماماً لضمان عدم ظهور أكواد HTML
 st.markdown(f"""
     <div class="top-nav animated-section">
-        <div style="display: flex; align-items: center; gap: 12px;">
-            <div style="transform: scale(0.65); transform-origin: right;">
-                {curex_logo_html}
-            </div>
+        <div>
+            <span style="font-weight: 800; color: #1E40AF; font-size: 18px;">Cure<span style="color: #0D9488;">X</span></span>
         </div>
-        <div style="font-size: 13px; color: #0D9488; background: #ECFDF5; padding: 5px 12px; border-radius: 20px; border: 1px solid #A7F3D0; ">
+        <div style="font-size: 13px; color: #0D9488; background: #ECFDF5; padding: 5px 12px; border-radius: 20px; border: 1px solid #A7F3D0;">
             <i class="bi bi-clock"></i> الوقت الحالي: {current_time_str}
         </div>
         <div style="display: flex; align-items: center; gap: 10px;">
@@ -562,15 +438,12 @@ with st.sidebar:
         <hr style="border-color: #E2E8F0; margin-bottom: 15px;">
     """, unsafe_allow_html=True)
     
-    # اختيار واجهة الاستخدام بدون أيقونات كما طلبْت
     app_mode = st.selectbox("اختر واجهة الاستخدام", [
         "متجر CureX الطبي", 
         "لوحة التحكم الرئيسية"
     ])
     
     st.markdown("---")
-    
-    # حقل سري تماماً للأدمن فقط (محمي لكلمة المرور)
     admin_pass = st.text_input("كلمة المرور للتحكم", type="password")
 
 if app_mode == "متجر CureX الطبي":
@@ -598,9 +471,6 @@ else:
     else:
         st.warning("🔒 أدخل كلمة المرور الصحيحة في القائمة الجانبية للوصول إلى لوحة التحكم الإدارية.")
 
-# -----------------------------------------------------------------------------
-# الفوتر
-# -----------------------------------------------------------------------------
 st.markdown("""
     <hr style='border-color: #CBD5E1; margin-top: 50px;'>
     <div style='display: flex; justify-content: space-between; align-items: center; color: #64748B; font-size: 13px; padding-bottom: 25px;' class='animated-section'>
