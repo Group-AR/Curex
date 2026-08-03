@@ -13,7 +13,7 @@ import time
 # -----------------------------------------------------------------------------
 st.set_page_config(
     page_title="متجر CureX للمستلزمات الطبية",
-    page_icon="🩺",
+    page_icon="CureX",
     layout="wide",
     initial_sidebar_state="expanded"
 )
